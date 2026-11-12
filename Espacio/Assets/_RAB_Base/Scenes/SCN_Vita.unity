@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: b141c8e4f6387ef45b13a68b10c88b7f, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -518,7 +518,7 @@ MonoBehaviour:
       Enabled: 0
       Size: {x: 0.8, y: 0.8}
       Offset: {x: 0, y: 0}
-  CenterOnActivate: 0
+  CenterOnActivate: 1
   TargetOffset: {x: 10, y: 10, z: 0}
   Damping: {x: 1, y: 1, z: 0.5}
   Lookahead:
@@ -577,13 +577,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 288670782}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.050106067, y: 0.3478978, z: -0.01862356, w: 0.9360073}
-  m_LocalPosition: {x: 136.95639, y: 15.624344, z: -9.952717}
+  m_LocalRotation: {x: 0.16582537, y: 0.019749368, z: 0.008077743, w: 0.9859243}
+  m_LocalPosition: {x: 149.75723, y: 20.065968, z: -11.957749}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 16.524, y: 2.759, z: 3.918}
+  m_LocalEulerAnglesHint: {x: 19.066, y: 2.524, z: 1.363}
 --- !u!114 &288670786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -789,8 +789,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.050106067, y: 0.3478978, z: -0.01862356, w: 0.9360073}
-  m_LocalPosition: {x: 136.95639, y: 15.624344, z: -9.952714}
+  m_LocalRotation: {x: 0.16582537, y: 0.019749368, z: 0.008077743, w: 0.9859243}
+  m_LocalPosition: {x: 149.75723, y: 20.065968, z: -11.95775}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2233,6 +2233,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5299152538087292456, guid: 0aba88227a887fb4bb24c3a3d398ee2d, type: 3}
+      propertyPath: freezeVolume
+      value: 
+      objectReference: {fileID: 674335980}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8169,6 +8173,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040690423}
   m_CullTransparentMesh: 1
+--- !u!1 &2049490334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2049490336}
+  - component: {fileID: 2049490335}
+  m_Layer: 0
+  m_Name: SkyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2049490335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049490334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee3d6154337de048825ebba477cf505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkyChanger
+--- !u!4 &2049490336
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049490334}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 174.766, y: 13.4784, z: 25.11383}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2055907962
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8423,7 +8471,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 555420231011711821, guid: 4473488d1da23354c94245a76c7c6c88, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 175.3
+      value: 184.4
       objectReference: {fileID: 0}
     - target: {fileID: 555420231011711821, guid: 4473488d1da23354c94245a76c7c6c88, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8749,3 +8797,4 @@ SceneRoots:
   - {fileID: 924358121}
   - {fileID: 519487595}
   - {fileID: 1282740497}
+  - {fileID: 2049490336}
