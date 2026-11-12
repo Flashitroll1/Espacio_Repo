@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9458fe5a0e4274389e6efb958d07eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Freeze
-  timeFreeze: 15
+  timeFreeze: 3
   helloCard: {fileID: 0}
   freezeVolume: {fileID: 0}
+  disappearAfter: 0
