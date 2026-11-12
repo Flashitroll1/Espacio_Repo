@@ -11,6 +11,7 @@ public class Freeze : MonoBehaviour
 
     public GameObject helloCard;
     public Volume freezeVolume; //Vintage
+    public bool disappearAfter = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -66,6 +67,7 @@ public class Freeze : MonoBehaviour
         helloCard = null;
         if (freezeVolume != null) freezeVolume.weight = 0;
         rb.constraints = RigidbodyConstraints.FreezeRotation; // Se vuelve como antes
+        if (disappearAfter) gameObject.SetActive(false);
         
     }
 
