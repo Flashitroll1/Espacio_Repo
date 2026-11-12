@@ -1,7 +1,14 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Espacio/Assets/_RAB_Base/Prefabs/PrefabsVita/Platform_Mountains.prefab.meta
 guid: 3420be8040ebe8540897dbb367dc34af
 PrefabImporter:
   externalObjects: {}
+========
+guid: d3fdeed75d6c6e64e97124c056275393
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+>>>>>>>> abdb9c4eb0ed7ed741fa464b73b210a3cdb18c91:Espacio/Assets/_RAB_Base/Materials/M_Vita/Global Volume Profile 1.asset.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 
