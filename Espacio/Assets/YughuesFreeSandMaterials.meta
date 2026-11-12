@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 1e0045f45d76c5746b1a9efdc1d23879
+<<<<<<<< Updated upstream:Espacio/Assets/YughuesFreeSandMaterials.meta
+guid: 9e52cda8cdc2f304ba7535131b3246c3
+========
+guid: 2c6d89867a56da44680aafafcb2c7e54
+>>>>>>>> Stashed changes:Espacio/Assets/_RAB_Base/Prefabs/PrefabsMario/Assets.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
