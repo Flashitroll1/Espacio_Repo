@@ -1463,7 +1463,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1030163748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1477,7 +1477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1516554, g: 0.21092854, b: 0.4528302, a: 0.392}
+  m_Color: {r: 0.4237718, g: 0.5907929, b: 0.8396226, a: 0.64705884}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1728,19 +1728,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2957284746577276831, guid: 0aba88227a887fb4bb24c3a3d398ee2d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 128.9
+      value: 135.37
       objectReference: {fileID: 0}
     - target: {fileID: 2957284746577276831, guid: 0aba88227a887fb4bb24c3a3d398ee2d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.499996
+      value: 8.26
       objectReference: {fileID: 0}
     - target: {fileID: 2957284746577276831, guid: 0aba88227a887fb4bb24c3a3d398ee2d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 56.3
+      value: 55.95
       objectReference: {fileID: 0}
     - target: {fileID: 2957284746577276831, guid: 0aba88227a887fb4bb24c3a3d398ee2d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9977186
+      value: 0.9999633
       objectReference: {fileID: 0}
     - target: {fileID: 2957284746577276831, guid: 0aba88227a887fb4bb24c3a3d398ee2d, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1748,7 +1748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2957284746577276831, guid: 0aba88227a887fb4bb24c3a3d398ee2d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0675112
+      value: -0.008568782
       objectReference: {fileID: 0}
     - target: {fileID: 2957284746577276831, guid: 0aba88227a887fb4bb24c3a3d398ee2d, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1760,7 +1760,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2957284746577276831, guid: 0aba88227a887fb4bb24c3a3d398ee2d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 7.742
+      value: -0.982
       objectReference: {fileID: 0}
     - target: {fileID: 2957284746577276831, guid: 0aba88227a887fb4bb24c3a3d398ee2d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -6949,8 +6949,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281996544
-  m_fontColor: {r: 0, g: 0.08275995, b: 0.2264151, a: 1}
+    rgba: 4283695120
+  m_fontColor: {r: 0.060803533, g: 0, b: 0.3301887, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
