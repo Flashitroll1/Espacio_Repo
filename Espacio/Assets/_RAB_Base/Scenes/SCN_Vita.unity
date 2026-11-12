@@ -1606,15 +1606,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4777587258532712166, guid: f112892af9a1a9841b78671fc92341ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 564.4
+      value: 318
       objectReference: {fileID: 0}
     - target: {fileID: 4777587258532712166, guid: f112892af9a1a9841b78671fc92341ee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.34
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4777587258532712166, guid: f112892af9a1a9841b78671fc92341ee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 233.87
+      value: 212
       objectReference: {fileID: 0}
     - target: {fileID: 4777587258532712166, guid: f112892af9a1a9841b78671fc92341ee, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2057,7 +2057,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4777587258532712166, guid: f112892af9a1a9841b78671fc92341ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 168.77563
+      value: 208
       objectReference: {fileID: 0}
     - target: {fileID: 4777587258532712166, guid: f112892af9a1a9841b78671fc92341ee, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2065,7 +2065,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4777587258532712166, guid: f112892af9a1a9841b78671fc92341ee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 930.3333
+      value: 314
       objectReference: {fileID: 0}
     - target: {fileID: 4777587258532712166, guid: f112892af9a1a9841b78671fc92341ee, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8182,7 +8182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2049490336}
-  - component: {fileID: 2049490335}
+  - component: {fileID: 2049490337}
   m_Layer: 0
   m_Name: SkyManager
   m_TagString: Untagged
@@ -8190,18 +8190,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2049490335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2049490334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee3d6154337de048825ebba477cf505, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SkyChanger
 --- !u!4 &2049490336
 Transform:
   m_ObjectHideFlags: 0
@@ -8217,6 +8205,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2049490337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049490334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee3d6154337de048825ebba477cf505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkyChanger
+  snowflakes:
+  - {fileID: 255271514}
+  - {fileID: 2006989418}
+  - {fileID: 1433927323}
+  - {fileID: 598904420}
+  - {fileID: 2035172459}
+  nihgtSkyBox: {fileID: 2100000, guid: d1fdb8e44b28da34d9e922cca0bc740e, type: 2}
+  sun: {fileID: 410087040}
+  nightLightIntensity: 0.3
+  flakesNeeded: 3
 --- !u!1001 &2055907962
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8541,7 +8551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4777587258532712166, guid: f112892af9a1a9841b78671fc92341ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 525.5
+      value: 262
       objectReference: {fileID: 0}
     - target: {fileID: 4777587258532712166, guid: f112892af9a1a9841b78671fc92341ee, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8549,7 +8559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4777587258532712166, guid: f112892af9a1a9841b78671fc92341ee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 364.8
+      value: 205
       objectReference: {fileID: 0}
     - target: {fileID: 4777587258532712166, guid: f112892af9a1a9841b78671fc92341ee, type: 3}
       propertyPath: m_LocalRotation.w
