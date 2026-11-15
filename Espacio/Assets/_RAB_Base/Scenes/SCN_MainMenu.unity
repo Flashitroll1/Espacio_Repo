@@ -619,28 +619,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'MANUAL DEL PILOTO
-
-
-    Un alien muy curioso viaja por el universo...
-
-    pero
-    su nave se rompe en cuatro mundos.
-
-
-    Rueda, recoge todos los objetos
-
-    y
-    encuentra las piezas de la nave.
-
-
-    MOVERSE: WASD o joystick
-
-    SALTAR:
-    Espacio
-
-
-    Cuidado, no te caigas. Buena suerte, piloto!'
+  m_text: "MANUAL DEL PILOTO\n\nUn alien muy curioso viaja por el universo...   \n\n
+    pero su nave se rompe en cuatro mundos.\n\nRueda, recoge todos los objetos y
+    encuentra las piezas de la nave.\n\nCuidado, no te caigas. Buena suerte, piloto!\n\nMOVERSE:
+    WASD o joystick\nSALTAR: Espacio"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1c5742a8a20910f41aff535008985886, type: 2}
   m_sharedMaterial: {fileID: 496052890602540340, guid: 1c5742a8a20910f41aff535008985886, type: 2}
@@ -649,8 +631,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294501848
-  m_fontColor: {r: 0.8479441, g: 0.8986053, b: 0.9716981, a: 1}
+    rgba: 4292260529
+  m_fontColor: {r: 0.6930847, g: 0.69966936, b: 0.8396226, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -674,7 +656,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 40
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 32
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -706,7 +688,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -757.61163, z: -392.67953, w: 0}
+  m_margin: {x: -222.06586, y: -757.61163, z: -392.67953, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
