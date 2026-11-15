@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public bool groundCheck; // Bool que determina si el pj puede saltar o no
 
     public float trampolineForce = 12f; // Define la fuerza del trampolín en el nivel de bosque
+    [HideInInspector] public Vector3 windForce = Vector3.zero; // Fuerza de viento actual
 
     [Header("Reference Variables")]
     public Rigidbody playerRb; // Almacén de referencia del rb
@@ -125,14 +126,12 @@ public class PlayerController : MonoBehaviour
         // 2. Movimiento para una BOLA: Aplicamos fuerza en la dirección para que el Rigidbody ruede de forma natural
         if (useLinearVelocity == true)
         {
-            // Mantenemos la velocidad en X y Z pero dejamos que la Y (gravedad/salto) actúe libremente
-            playerRb.linearVelocity = new Vector3(adjustedMoveDir.x * speed, playerRb.linearVelocity.y, adjustedMoveDir.z * speed);
-        }
-        else
-        {
-            // Aplicamos fuerza de empuje (esto hará que la bola ruede orgánicamente por el suelo debido a la fricción)
-            Vector3 forceDir = new Vector3(adjustedMoveDir.x, 0f, adjustedMoveDir.z);
-            playerRb.AddForce(forceDir * speed * 10f);
+            // Mantenemos el movimiento normal y le sumamos la fuerza del viento
+            playerRb.linearVelocity = new Vector3(
+                (adjustedMoveDir.x * speed) + windForce.x,
+                playerRb.linearVelocity.y,
+                (adjustedMoveDir.z * speed) + windForce.z
+            );
         }
 
         // NOTA PARA LA BOLA: Al ser una esfera con un Physics Material que tenga fricción, 
