@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce; //Define la fuerza de salto
     public bool useLinearVelocity = true; //Si es verdadero, usará el movimiento físico por motor de aceleración, si no, el de fuerza de empuje
     public bool groundCheck; //Bool que determina si el pj puede saltar o no (cuando está en el suelo puede)
+    public Transform activeCameraTransform;
 
     [Header("Reference Variables")]
     public Rigidbody playerRb; //Almacén de referencia del rb, una vez relleno permite modificar sus variables internas
@@ -51,16 +52,45 @@ public class PlayerController : MonoBehaviour
 
     void PhysicalMove()
     {
+        // Obtenemos la orientación de la cámara principal activa en este momento
+        Transform camTransform = activeCameraTransform != null ? activeCameraTransform : Camera.main.transform;
+
+        Vector3 moveDirection = Vector3.forward * moveInput.y + Vector3.right * moveInput.x;
+
+        if (camTransform != null)
+        {
+            // Cogemos el frente y la derecha de la cámara, pero anulamos el eje Y (altura) 
+            // para que el personaje se mueva plano por el suelo
+            Vector3 camForward = camTransform.forward;
+            Vector3 camRight = camTransform.right;
+
+            camForward.y = 0f;
+            camRight.y = 0f;
+
+            camForward.Normalize();
+            camRight.Normalize();
+
+            // Calculamos la dirección final basada en la perspectiva de la cámara
+            moveDirection = (camForward * moveInput.y + camRight * moveInput.x);
+        }
+
         if (useLinearVelocity == true)
         {
-            //Tipo de movimiento por uso del motor de aceleración del rigidbody
-            playerRb.linearVelocity = new Vector3(speed * moveInput.x, playerRb.linearVelocity.y, speed * moveInput.y);
+            // Aplicamos la velocidad adaptada a la cámara
+            playerRb.linearVelocity = new Vector3(moveDirection.x * speed, playerRb.linearVelocity.y, moveDirection.z * speed);
         }
         else
         {
-            //Tipo de movimiento por fuerza de empuje en cada eje del rigidbody
-            playerRb.AddForce(Vector3.right * speed * moveInput.x);
-            playerRb.AddForce(Vector3.forward * speed * moveInput.y);
+            // Si usas fuerzas de empuje
+            playerRb.AddForce(moveDirection * speed);
+        }
+        if (camTransform != null)
+        {
+            Debug.Log("Moviéndome según la cámara: " + camTransform.name);
+        }
+        else
+        {
+            Debug.LogWarning("¡No hay ninguna cámara con el Tag MainCamera activa!");
         }
     }
 
