@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public bool useLinearVelocity = true; // Si es verdadero, usará el movimiento físico por motor de aceleración
     public bool groundCheck; // Bool que determina si el pj puede saltar o no
 
+    public float trampolineForce = 12f; // Define la fuerza del trampolín en el nivel de bosque
+
     [Header("Reference Variables")]
     public Rigidbody playerRb; // Almacén de referencia del rb
     public Vector2 moveInput; // Almacén de los valores de pulsación de movimiento
@@ -69,12 +71,38 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision)
+{
+    if (collision.gameObject.CompareTag("Trampoline"))
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        for (int i = 0; i < collision.contactCount; i++)
         {
-            groundCheck = true; // Al chocar con el suelo se devuelve la posibilidad de saltar
+            // Comprueba que el contacto sea desde arriba.
+            if (collision.GetContact(i).normal.y > 0.5f)
+            {
+                groundCheck = false;
+
+                // Elimina la velocidad vertical previa,
+                // conservando el movimiento horizontal.
+                Vector3 velocity = playerRb.linearVelocity;
+                velocity.y = 0f;
+                playerRb.linearVelocity = velocity;
+
+                // Aplica el impulso del trampolín.
+                playerRb.AddForce(
+                    Vector3.up * trampolineForce,
+                    ForceMode.Impulse
+                );
+
+                return;
+            }
         }
     }
+
+    if (collision.gameObject.CompareTag("Ground"))
+    {
+        groundCheck = true;
+    }
+}
 
     void PhysicalMove()
     {
