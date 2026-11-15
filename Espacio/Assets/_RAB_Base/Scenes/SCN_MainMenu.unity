@@ -1288,7 +1288,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Aventura especial
+  m_text: Little Green Adventure
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1c5742a8a20910f41aff535008985886, type: 2}
   m_sharedMaterial: {fileID: 496052890602540340, guid: 1c5742a8a20910f41aff535008985886, type: 2}
@@ -1297,8 +1297,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294961394
-  m_fontColor: {r: 0.950874, g: 0.9103774, b: 1, a: 1}
+    rgba: 4293328871
+  m_fontColor: {r: 0.9062039, g: 1, b: 0.9009434, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
