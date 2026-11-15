@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro; // <--- Imprescindible para TextMeshPro
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,16 +18,63 @@ public class PlayerController : MonoBehaviour
     public AudioSource sfxSource; //Ref al altavoz del player, para reproducir sonidos
     public PlayerInteractor playerInteractor; //Ref al script, permite acceder a su lista de sonidos públicos
 
+
+    [Header("Oxygen System")]
+    public float maxOxygen = 100f;
+    public float currentOxygen;
+    public float oxygenDrainRate = 5f;
+
+    [Header("UI References")]
+    public GameObject oxygenTextObj; // Arrastras aquí el objeto del texto desde Unity
+    private TMPro.TextMeshProUGUI oxygenText; // El componente se pillará solo
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
-        // Inicialización si se necesita
+        currentOxygen = maxOxygen;
+        if (oxygenTextObj != null)
+        {
+            oxygenText = oxygenTextObj.GetComponent<TMPro.TextMeshProUGUI>();
+        }
+        // ... lo que ya tuvieras en tu Start ...
+
+        // Busca automáticamente el objeto de texto en la escena por su nombre
+        GameObject textObj = GameObject.Find("OXIGENO");
+        if (textObj != null)
+        {
+            oxygenText = textObj.GetComponent<TMPro.TextMeshProUGUI>();
+        }
+        else
+        {
+            Debug.LogError("No se encuentra ningun objeto con el nombre OXIGENO en la jerarquia.");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Al usar el Input System con OnMove, no necesitamos leer las teclas aquí de forma clásica.
+        if (currentOxygen > 0)
+        {
+            currentOxygen -= oxygenDrainRate * Time.deltaTime;
+
+            // Aquí puedes poner lo que pasa si llega a 0 (morir, reiniciar nivel, etc.)
+            if (currentOxygen <= 0)
+            {
+                currentOxygen = 0;
+                // TODO: Lógica de muerte o ahogamiento
+            }
+        }
+        // Actualizamos el texto en pantalla si está asignado
+        if (oxygenText != null)
+        {
+            // Math.FToInteger o ToString("F0") para que no salgan muchos decimales molestos
+            oxygenText.text = "Oxígeno: " + Mathf.Ceil(currentOxygen).ToString() + "%";
+        }
+        if (oxygenText != null)
+        {
+            oxygenText.text = "Oxígeno: " + Mathf.Ceil(currentOxygen).ToString() + "%";
+        }
     }
 
     private void FixedUpdate()
