@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public bool groundCheck; // Bool que determina si el pj puede saltar o no
 
     public float trampolineForce = 12f; // Define la fuerza del trampolín en el nivel de bosque
+    [HideInInspector] public Vector3 windForce = Vector3.zero; // Fuerza de viento actual
 
     [Header("Reference Variables")]
     public Rigidbody playerRb; // Almacén de referencia del rb
@@ -54,6 +55,7 @@ public class PlayerController : MonoBehaviour
             if (currentOxygen <= 0)
             {
                 currentOxygen = 0;
+                RespawnPlayer(); // ¡Si el oxígeno llega a 0, reaparece automáticamente!
             }
         }
 
@@ -64,6 +66,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     private void FixedUpdate()
     {
         // FixedUpdate ejecuta todo lo relacionado con el motor de físicas y movimiento original
@@ -71,38 +74,38 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision)
-{
-    if (collision.gameObject.CompareTag("Trampoline"))
     {
-        for (int i = 0; i < collision.contactCount; i++)
+        if (collision.gameObject.CompareTag("Trampoline"))
         {
-            // Comprueba que el contacto sea desde arriba.
-            if (collision.GetContact(i).normal.y > 0.5f)
+            for (int i = 0; i < collision.contactCount; i++)
             {
-                groundCheck = false;
+                // Comprueba que el contacto sea desde arriba.
+                if (collision.GetContact(i).normal.y > 0.5f)
+                {
+                    groundCheck = false;
 
-                // Elimina la velocidad vertical previa,
-                // conservando el movimiento horizontal.
-                Vector3 velocity = playerRb.linearVelocity;
-                velocity.y = 0f;
-                playerRb.linearVelocity = velocity;
+                    // Elimina la velocidad vertical previa,
+                    // conservando el movimiento horizontal.
+                    Vector3 velocity = playerRb.linearVelocity;
+                    velocity.y = 0f;
+                    playerRb.linearVelocity = velocity;
 
-                // Aplica el impulso del trampolín.
-                playerRb.AddForce(
-                    Vector3.up * trampolineForce,
-                    ForceMode.Impulse
-                );
+                    // Aplica el impulso del trampolín.
+                    playerRb.AddForce(
+                        Vector3.up * trampolineForce,
+                        ForceMode.Impulse
+                    );
 
-                return;
+                    return;
+                }
             }
         }
-    }
 
-    if (collision.gameObject.CompareTag("Ground"))
-    {
-        groundCheck = true;
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            groundCheck = true;
+        }
     }
-}
 
     void PhysicalMove()
     {
@@ -125,18 +128,13 @@ public class PlayerController : MonoBehaviour
         // 2. Movimiento para una BOLA: Aplicamos fuerza en la dirección para que el Rigidbody ruede de forma natural
         if (useLinearVelocity == true)
         {
-            // Mantenemos la velocidad en X y Z pero dejamos que la Y (gravedad/salto) actúe libremente
-            playerRb.linearVelocity = new Vector3(adjustedMoveDir.x * speed, playerRb.linearVelocity.y, adjustedMoveDir.z * speed);
+            // Mantenemos el movimiento normal y le sumamos la fuerza del viento
+            playerRb.linearVelocity = new Vector3(
+                (adjustedMoveDir.x * speed) + windForce.x,
+                playerRb.linearVelocity.y,
+                (adjustedMoveDir.z * speed) + windForce.z
+            );
         }
-        else
-        {
-            // Aplicamos fuerza de empuje (esto hará que la bola ruede orgánicamente por el suelo debido a la fricción)
-            Vector3 forceDir = new Vector3(adjustedMoveDir.x, 0f, adjustedMoveDir.z);
-            playerRb.AddForce(forceDir * speed * 10f);
-        }
-
-        // NOTA PARA LA BOLA: Al ser una esfera con un Physics Material que tenga fricción, 
-        // el propio motor de Rigidbody la hará rodar sola al moverse, ¡sin necesidad de forzar rotaciones artificiales!
     }
 
     void Jump()
@@ -147,12 +145,61 @@ public class PlayerController : MonoBehaviour
         // Reproducción de sonido segura para Arrays o Listas
         if (sfxSource != null && playerInteractor != null)
         {
-            // Comprobamos si hay elementos en el array/lista usando Length y asegurándonos de que no es null
             if (playerInteractor.sfxList != null && playerInteractor.sfxList.Length > 0 && playerInteractor.sfxList[0] != null)
             {
                 sfxSource.PlayOneShot(playerInteractor.sfxList[0]);
             }
         }
+    }
+
+    // --- SISTEMA DE REAPARICIÓN (CHECKPOINT MÁS CERCANO Y CÁMARA) ---
+    public void RespawnPlayer()
+    {
+        // Buscamos todos los objetos de la escena que tengan asignado el Tag "Respawn"
+        GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
+
+        if (spawnPoints.Length == 0)
+        {
+            Debug.LogWarning("¡Cuidado! No hay ningún objeto con el Tag 'Respawn' en la escena.");
+            return;
+        }
+
+        // Encontramos el spawnpoint más cercano a la posición actual del jugador
+        Transform closestSpawn = spawnPoints[0].transform;
+        float minDistance = Vector3.Distance(transform.position, closestSpawn.position);
+
+        foreach (GameObject sp in spawnPoints)
+        {
+            float distance = Vector3.Distance(transform.position, sp.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closestSpawn = sp.transform;
+            }
+        }
+
+        // 1. Teletransportamos al jugador al checkpoint más cercano
+        transform.position = closestSpawn.position;
+
+        // 2. Gestionamos la cámara asociada a este checkpoint si tiene el script Checkpoint.cs
+        Checkpoint cpScript = closestSpawn.GetComponent<Checkpoint>();
+        if (cpScript != null && cpScript.cameraForThisCheckpoint != null)
+        {
+            cpScript.cameraForThisCheckpoint.SetActive(true);
+            activeCameraTransform = cpScript.cameraForThisCheckpoint.transform;
+        }
+
+        // 3. Limpiamos las velocidades físicas para que no conserve inercias raras al reaparecer
+        if (playerRb != null)
+        {
+            playerRb.linearVelocity = Vector3.zero;
+            playerRb.angularVelocity = Vector3.zero;
+        }
+
+        // 4. Rellenamos el oxígeno al máximo
+        currentOxygen = maxOxygen;
+
+        Debug.Log(">>> ¡Jugador reaparecido y cámara actualizada en el checkpoint más cercano!");
     }
 
     #region Input Methods
