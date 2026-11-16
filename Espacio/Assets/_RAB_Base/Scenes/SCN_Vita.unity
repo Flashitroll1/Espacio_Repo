@@ -1847,6 +1847,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 555420231011711821, guid: 4473488d1da23354c94245a76c7c6c88, type: 3}
   m_PrefabInstance: {fileID: 378423281}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &394445960 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3295082559860610859, guid: ad05bb52c848bd34798792368a48d415, type: 3}
+  m_PrefabInstance: {fileID: 26829388963113164}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -11801,6 +11806,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2957284746577276831, guid: 0aba88227a887fb4bb24c3a3d398ee2d, type: 3}
   m_PrefabInstance: {fileID: 1893229299}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1928315216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1928315217}
+  m_Layer: 0
+  m_Name: aaa
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1928315217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928315216}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1952418646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12563,12 +12599,25 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2955268093276677981, guid: ad05bb52c848bd34798792368a48d415, type: 3}
   m_PrefabInstance: {fileID: 26829388963113164}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 394445960}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88bad9a0e184c354686eea7ba9941b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractor
+--- !u!114 &2124307334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394445960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3eaf98eac3f891448f9f569b9a93888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IceMovement
+  force: 12
 --- !u!1001 &2132652666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12740,7 +12789,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3764835493390259756, guid: ad05bb52c848bd34798792368a48d415, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1435873094}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3295082559860610859, guid: ad05bb52c848bd34798792368a48d415, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2124307334}
   m_SourcePrefab: {fileID: 100100000, guid: ad05bb52c848bd34798792368a48d415, type: 3}
 --- !u!1001 &1637236377536556179
 PrefabInstance:
@@ -13229,3 +13281,4 @@ SceneRoots:
   - {fileID: 69683467}
   - {fileID: 1846767452}
   - {fileID: 1487242969}
+  - {fileID: 1928315217}
