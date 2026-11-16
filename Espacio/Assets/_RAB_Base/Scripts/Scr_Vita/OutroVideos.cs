@@ -8,6 +8,7 @@ public class OutroVideo : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         if (video == null || video.clip == null)
         {
             victoryPanel.SetActive(true);
